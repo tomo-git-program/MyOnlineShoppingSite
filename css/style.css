@@ -26,12 +26,12 @@ article.fixed-content{
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
 }
 
 .box-shadow{
   position: relative;
   box-shadow: 0px 2px 5px rgb(0,0,0,0.4);
-  z-index: 2;
 }
 
 #first-menu{
@@ -180,48 +180,84 @@ article.fixed-content{
 }
 .carousel-slides{
   display: flex;
+  position: relative;
   height: 400px;
   width: 600px;
   margin: 0 auto;
   outline: 1px solid black;
   overflow: hidden;
 }
-.carousel-slides ul{
+.carousel-slides ul.slides{
   display: flex;
-  position: relative;
   list-style: none;
   transform: translateX(0px);
   transition: transform 0.5s;
 }
-.carousel-slides ul:hover{
-  transform: translateX(-600px);
-}
-.carousel-slides ul > li{
+.carousel-slides ul.slides > li{
   height: 100%;
   width: 100%;
 }
+.carousel-slides ul.slides img{
+  width: 600px;
+  height: 400px;
+}
 
 
-.carousel-slides .left-button{
+.carousel-slides .left-button, .carousel-slides .right-button{
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  padding: 0 12px;
+  background-color: lightgray;
+}
+.carousel-slides .left-button{
   left: 0;
 }
 .carousel-slides .right-button{
-  position: absolute;
-  top: 50px;
   right: 0;
 }
+.carousel-slides .left-button:hover, .carousel-slides .right-button:hover{
+  opacity: 0.5;
+}
+
+ul.dots{
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 600px;
+  height: calc(100px * 0.6);
+  margin: 0 auto;
+  list-style: none;
+  outline: 2px solid pink;
+}
+ul.dots li{
+  height: 100%;
+  border: 2px solid rgb(174, 174, 174);
+}
+ul.dots li a{
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+ul.dots li a:hover{
+  opacity: 1;
+}
+ul.dots img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 
 
 
 
 
 /* javaScript制御用セレクター群 */
-#first-menu .btw-left a.list-icon{
-
-}
-
+/* accordionメニュー */
 .accordion-menu{
   position: absolute;
   width: 176px;
@@ -250,6 +286,16 @@ article.fixed-content{
   color: white;
 }
 
+/* カルーセルslide */
+.carousel-slides .left-button.hidden,.carousel-slides .right-button.hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+ul.dots li a.selected{
+  opacity: 1;
+}
+
 /* スマホ用メディアクエリ */
 @media(max-width:700px){
   #first-menu .btw-center {
@@ -260,6 +306,7 @@ article.fixed-content{
     display: block;
     padding: 8px 4px 8px;
     z-index: 1;
+    background-color: white;
   }
   #media-search input{
     border: 1px solid #333;
