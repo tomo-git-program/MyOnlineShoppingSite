@@ -80,7 +80,23 @@
     dotsLists[current].classList.add('selected');
   }
 
+  function play(){
+    setTimeout(() =>{
+      console.log("move!");
+      console.log(`${current}`)
+      if(current === li.length - 1){
+        current = 0;
+      }else{
+        current++;
+      }
+      dotsController();
+      updateButton();
+      slideWidthController();
+      play();
+    }, 5000)
+  }
 
+  play();
   dotsController();
   updateButton();
   leftBtn.addEventListener('click',() => {
@@ -97,6 +113,7 @@
     slideWidthController();
   });
 
+  // ここまでカールセルとカールセルアニメーションのScript
 
 
   
