@@ -316,10 +316,6 @@ ul.dots img{
   display: none;
 }
 
-.rarity-select h3{
-  border-bottom: 1px solid black;
-}
-
 
 input[type="checkbox"]:checked+label:before{
   opacity: 1;
@@ -342,6 +338,46 @@ input[type="checkbox"]+label[for="green"]:before{
 }
 input[type="checkbox"]+label[for="black"]:before{
   background-image: url(../imgs/color-pie-black.png);
+  background-size: cover;
+}
+
+.rarity-select input[type="radio"]{
+  display: none;
+}
+.rarity-select h3{
+  border-bottom: 1px solid black;
+}
+
+.rarity-select input[type="radio"]+label:before{
+  cursor: pointer;
+  display: inline-block;
+  content: "";
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.rarity-select input[type="radio"]:checked+label:before{
+  opacity: 1;
+}
+.rarity-select input[type="radio"]+label[for="urare"]:before{
+  background-image: url(../imgs/UR.png);
+  background-size: cover;
+}
+.rarity-select input[type="radio"]+label[for="srare"]:before{
+  background-image: url(../imgs/SR.jpg);
+  background-size: cover;
+}
+.rarity-select input[type="radio"]+label[for="rare"]:before{
+  background-image: url(../imgs/R.jpg);
+  background-size: cover;
+}
+.rarity-select input[type="radio"]+label[for="uncom"]:before{
+  background-image: url(../imgs/UN.jpg);
+  background-size: cover;
+}
+.rarity-select input[type="radio"]+label[for="com"]:before{
+  background-image: url(../imgs/C.jpg);
   background-size: cover;
 }
 
