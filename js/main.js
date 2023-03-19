@@ -30,12 +30,13 @@
 
   const ul = document.querySelector('.carousel-slides ul.slides');
   const li = ul.children;
-
+  //↑スライドの数
   const leftBtn = document.querySelector('.left-button');
   const rightBtn = document.querySelector('.right-button');
 
   const dotsLists  = document.querySelectorAll('ul.dots li a');
-  const dots = [];
+  //↑ドットタブの数
+
   //slide一枚分の横幅の長さ
   let current = 0;
   //leftなら+ rightなら-
@@ -80,10 +81,11 @@
     dotsLists[current].classList.add('selected');
   }
 
+  let setTimeId;
   function play(){
-    setTimeout(() =>{
-      console.log("move!");
-      console.log(`${current}`)
+    setTimeId = setTimeout(() =>{
+      // console.log("move!");
+      // console.log(`${current}`)
       if(current === li.length - 1){
         current = 0;
       }else{
@@ -93,10 +95,24 @@
       updateButton();
       slideWidthController();
       play();
-    }, 5000)
+    }, 10000)
   }
 
+  function slidesDotsEqualer(){
+    try {
+      if(!(li.length === dotsLists.length)){
+        //もし、slideの数とドットの数が一致しないならコンソール出して
+        //処理終了
+        clearTimeout(setTimeId);
+        throw new Error('slideとDotの数が違います。終了します。');;
+      }
+    } catch (e) {
+      console.log(e.message);
+      //ここにはthrow new errorの内容が出てくる
+    }
+  }
   play();
+  slidesDotsEqualer();
   dotsController();
   updateButton();
   leftBtn.addEventListener('click',() => {
