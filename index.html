@@ -113,7 +113,18 @@
       <form action="">
         <section class="card-search">
           <h3>カード検索</h3>
-          <input type="text">
+            <input type="search" placeholder="商品名、キーワードを入力してください">
+        </section>
+
+        <section class="card-sets">
+          <h3>カードセットを選択</h3>
+          <select>
+            <option value="none">指定なし</option>
+            <option value="a-block">セットA</option>
+            <option value="b-block">セットB</option>
+            <option value="c-block">セットC</option>
+            <option value="d-block">セットD</option>
+          </select>
         </section>
 
         <section class="color-select">
@@ -134,6 +145,26 @@
             <input type="checkbox" id="black">
             <label for="black"></label>
           </div>
+        </section>
+        <section class="rarity-select">
+          <h3>レアリティを選択</h3>
+          <div>
+            <input type="radio" id="urare" name="rarity">
+            <label for="urare">UR</label>
+
+            <input type="radio" id="srare" name="rarity">
+            <label for="srare">SR</label>
+
+            <input type="radio" id="rare" name="rarity">
+            <label for="rare">Rare</label>
+
+            <input type="radio" id="uncom" name="rarity">
+            <label for="uncom">UnCommon</label>
+
+            <input type="radio" id="com" name="rarity">
+            <label for="com">Common</label>
+          </div>
+
         </section>
       </form>
     </article>
