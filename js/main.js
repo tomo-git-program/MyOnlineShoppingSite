@@ -129,7 +129,39 @@
     slideWidthController();
   });
 
+  window.addEventListener('resize',()=>{
+    slideWidthController();
+  })
+
   // ここまでカールセルとカールセルアニメーションのScript
+
+  const arrivalLeftButton = document.querySelector("button.arrival-left-button");
+  const arrivalRightButton = document.querySelector("button.arrival-right-button");
+
+  const arrivalsLists = document.querySelector("ul.arrivalsLists");
+
+  let arrivalCurrent = 0;
+
+  arrivalLeftButton.addEventListener('click', ()=>{
+    console.log("clicked!");
+    const arrivalslide = arrivalsLists.children[0].getBoundingClientRect().width + 12;
+    console.log(arrivalslide);
+    // +12はgapの分
+
+    arrivalCurrent++;
+    arrivalsLists.style.transform = `translateX(${ -1 * arrivalslide * arrivalCurrent}px)`;
+
+  });
+  arrivalRightButton.addEventListener('click', ()=>{
+    console.log("clicked!");
+    const arrivalslide = arrivalsLists.children[0].getBoundingClientRect().width + 12;
+    console.log(arrivalslide);
+    // +12はgapの分
+
+    arrivalCurrent--;
+    arrivalsLists.style.transform = `translateX(${ -1 * arrivalslide * arrivalCurrent}px)`;
+
+  });
 
 
   
