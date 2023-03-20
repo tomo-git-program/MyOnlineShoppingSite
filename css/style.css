@@ -461,6 +461,10 @@ ul.dots img{
   top: 50%;
   right: 0;
 }
+#arrival-items button.arrival-left-button.hidden, #arrival-items button.arrival-right-button.hidden{
+  opacity: 0;
+  pointer-events: none;
+}
 #arrival-items ul.arrivalsLists > li{
   display: flex;
   flex-direction: column;

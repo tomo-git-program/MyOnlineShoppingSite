@@ -142,26 +142,53 @@
 
   let arrivalCurrent = 0;
 
-  arrivalLeftButton.addEventListener('click', ()=>{
-    console.log("clicked!");
-    const arrivalslide = arrivalsLists.children[0].getBoundingClientRect().width + 12;
-    console.log(arrivalslide);
-    // +12はgapの分
 
-    arrivalCurrent++;
+  function arrivalButtonsController(){
+    arrivalLeftButton.classList.remove('hidden');
+    arrivalRightButton.classList.remove('hidden');
+
+    if(arrivalCurrent === arrivalsLists.children.length - 1){
+      arrivalRightButton.classList.add('hidden');
+      return;
+    }else{
+      arrivalRightButton.classList.remove('hidden');
+    }
+
+    if(arrivalCurrent === 0){
+      arrivalLeftButton.classList.add('hidden');
+      return;
+    }else{
+      arrivalLeftButton.classList.remove('hidden');
+    }
+
+  }
+
+  function arrivalslideMover(){
+    const arrivalslide = arrivalsLists.children[0].getBoundingClientRect().width + 12;
     arrivalsLists.style.transform = `translateX(${ -1 * arrivalslide * arrivalCurrent}px)`;
+  }
+
+  arrivalButtonsController();
+  arrivalLeftButton.addEventListener('click', ()=>{
+    // +12はgapの分
+    console.log(arrivalsLists.children.length - 2);
+    console.log(arrivalCurrent);
+    arrivalCurrent--;
+    arrivalButtonsController();
+    arrivalslideMover();
 
   });
   arrivalRightButton.addEventListener('click', ()=>{
-    console.log("clicked!");
     const arrivalslide = arrivalsLists.children[0].getBoundingClientRect().width + 12;
-    console.log(arrivalslide);
     // +12はgapの分
-
-    arrivalCurrent--;
-    arrivalsLists.style.transform = `translateX(${ -1 * arrivalslide * arrivalCurrent}px)`;
-
+    arrivalCurrent++;
+    arrivalButtonsController();
+    arrivalslideMover();
   });
+
+  window.addEventListener('resize',()=>{
+    arrivalslideMover();
+  })
 
 
   
