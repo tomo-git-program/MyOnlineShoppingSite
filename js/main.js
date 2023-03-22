@@ -135,14 +135,93 @@
 
   // ここまでカールセルとカールセルアニメーションのScript
 
+
+  function arrivalItemsGenerator(count){
+    for(let i = 0; i < count; i++){
+      //合体元の親ノード
+      const motherUl = document.querySelector("div.arrow-pos-container").children[0];
+      const arrival_li = document.createElement('li');
+      //↑ul + 生成した(li)の連結ノード
+      // 自動でcreateしたいエレメント
+  
+      const arrival_sold_out = document.createElement('div');
+      const sold_out_text = document.createElement('p');
+      
+      const arrival_a =  document.createElement('a');
+      let arrival_img = document.createElement('img');
+      //カードのイメージ画像も調整できるように
+      let cardName_p = document.createElement('p');
+      //カード名は調整できるように
+      let inventory_p = document.createElement('p');
+      //在庫数は調整できるように
+      let price_p = document.createElement('p');
+      //値段は調整できるように
+  
+  
+      //下準備系
+      arrival_sold_out.classList.add("soldout");
+      // div class="soldout"
+      sold_out_text.textContent = "sold out"
+      //pテキスト(sold out)
+      arrival_sold_out.appendChild(sold_out_text);
+      // div > p
+      arrival_a.appendChild(arrival_img);
+      //a > img
+      cardName_p.classList.add("cardname");
+      //p class="cardname"
+      inventory_p.classList.add("inventory");
+      //p class="inventory"
+      price_p.classList.add("price");
+      //<p class="price">
+  
+      //大元にドッキングする系
+      arrival_li.appendChild(arrival_sold_out);
+      // ul > li > div(p入ってる)
+      //divをbaseliにアペンド
+      arrival_li.appendChild(arrival_a);
+      // ul > li > a(img入ってる)
+      arrival_li.appendChild(cardName_p);
+      //ul > li > p(カード名【名前はまだない】)
+      arrival_li.appendChild(inventory_p);
+      //ul > li > p(在庫数【在庫数はまだない】)
+      arrival_li.appendChild(price_p);
+      //ul > li > p(値段【値段はまだない】)
+      motherUl.appendChild(arrival_li);
+    }
+  }
+  function arrivalItemsSetup(number,href, imgSrc, cardName, inventory,price){
+    const lists = document.querySelector('ul.arrivalsLists').children;
+    document.querySelector('ul.arrivalsLists').removeChild;
+    lists[number].querySelector('a').setAttribute(`href`, href);
+    lists[number].querySelector('img').src = imgSrc;
+    lists[number].querySelector('p.cardname').textContent = `${cardName}`;
+    lists[number].querySelector('p.inventory').textContent = `【在庫数:】${inventory}枚`;
+    lists[number].querySelector('p.price').textContent = `【値段:】${price}円`;
+
+    if(inventory <= 0){
+      const soldout = lists[number].querySelector('div.soldout');
+      soldout.classList.add("appear");
+    }else{
+      return
+    }
+  }
+
+
+  arrivalItemsGenerator(7);
+  arrivalItemsSetup(0, "#","imgs/arrival-cards.jpg","船砕きの怪物", 30, 1000);
+  arrivalItemsSetup(1, "#","imgs/arrival-cards.jpg","ドミナリアの英雄、テフェリー", 5, 1000);
+  arrivalItemsSetup(2, "#","imgs/arrival-cards.jpg","黙示録、シェオルドレッド", 25, 1000);
+  arrivalItemsSetup(3, "#","imgs/arrival-cards.jpg","時を解すもの、テフェリー", 0, 1000);
+  arrivalItemsSetup(4, "#","imgs/arrival-cards.jpg","船砕きの怪物", 5, 1000);
+
+  const lists = document.querySelector('ul.arrivalsLists').children;
+
   const arrivalLeftButton = document.querySelector("button.arrival-left-button");
   const arrivalRightButton = document.querySelector("button.arrival-right-button");
 
   const arrivalsLists = document.querySelector("ul.arrivalsLists");
 
   let arrivalCurrent = 0;
-
-
   function arrivalButtonsController(){
     arrivalLeftButton.classList.remove('hidden');
     arrivalRightButton.classList.remove('hidden');

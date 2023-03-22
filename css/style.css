@@ -1,8 +1,7 @@
 /* common */
-
 body{
   font-size: 100%;
-  font-style:  "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+  font-family:  "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
 }
 
 p{
@@ -472,7 +471,7 @@ ul.dots img{
   min-width: calc((100% - (12px * 5)) / 6);
   text-align: left;
   position: relative;
-  background-color: aquamarine;
+  background-color: antiquewhite;
 }
 #arrival-items ul.arrivalsLists > li > div.soldout{
   /* jsでの操作対象 */
@@ -485,6 +484,8 @@ ul.dots img{
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  pointer-events: none;
 }
 #arrival-items ul.arrivalsLists > li > div.soldout > p{
   font-size: 3vw;
@@ -503,6 +504,59 @@ ul.dots img{
 }
 #arrival-items ul.arrivalsLists > li > p{
   font-size: 1.5vw;
+}
+
+#format-feature{
+  margin-top: 80px;
+  padding: 0 24px;
+}
+#format-feature h3{
+  border-bottom: 1px solid black;
+}
+#format-feature ul{
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+}
+#format-feature li{
+  width: calc(((100% - 12px * 2) / 3));
+  height: auto;
+}
+#format-feature li > a{
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+#format-feature li > a > img{
+  width: 100%;
+  vertical-align: bottom;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+#format-feature li > a:hover > img{
+  transform: scale(1.3, 1.3);
+}
+#format-feature a > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 70%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  font-size: 1.5vw;
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px black;
+  text-align: center;
+  color: white;
+  background-color: rgba(255, 192, 203,0.6);
+}
+#format-feature a > div > p{
+  font-size: 2vw;
 }
 
 
@@ -545,6 +599,12 @@ ul.dots img{
 .accordion-menu a:hover{
   background-color: rgba(255,0,0,0.5);
   color: white;
+}
+/* sold out opacity 操作用 */
+#arrival-items ul.arrivalsLists > li > div.soldout.appear{
+  /* jsでの操作対象 */
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* カルーセルslide */
@@ -592,6 +652,10 @@ ul.dots li a.selected{
   #arrival-items ul.arrivalsLists > li{
     width: 100%;
     min-width: calc((100% - (12px * 2)) / 3);
+  }
+
+  #format-feature li{
+    width: calc(((100% - 12px * 1) / 2));
   }
 }
 
