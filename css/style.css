@@ -25,7 +25,7 @@ article.fixed-content{
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 5;
 }
 
 .box-shadow{
@@ -496,11 +496,34 @@ ul.dots img{
 #arrival-items ul.arrivalsLists > li > a{
   display: block;
   width: 100%;
+  position: relative;
 }
 #arrival-items ul.arrivalsLists > li > a > img{
   width: 100%;
   text-align: center;
   font-weight: bolder;
+}
+
+#arrival-items ul.arrivalsLists > li > a > div.buy{
+  position: absolute;
+  top: 0;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  background-color: rgba(65, 51, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+#arrival-items ul.arrivalsLists > li > a > div.buy:hover{
+  opacity: 1;
+}
+#arrival-items ul.arrivalsLists > li > a > div.buy > p, #arrival-items ul.arrivalsLists > li > a > div.buy:hover > p{
+  font-size: 1.8vw;
+  font-weight: bolder;
+  color: white;
 }
 #arrival-items ul.arrivalsLists > li > p{
   font-size: 1.5vw;
@@ -579,13 +602,15 @@ ul.dots img{
   text-align: center;
   background-color: rgba(255,255,255,0.8);
   box-shadow: 2px 2px 4px rgb(0,0,0,0.4);
-  z-index: 3;
+  z-index: 5;
 }
 .accordion-menu ul{
   overflow: hidden;
+  position: relative;
   height: 0px;
   min-height: 0px;
   transition: min-height 0.3s;
+  z-index: 5;
 }
 .accordion-menu ul.appear{
   min-height: 371px;
@@ -605,6 +630,7 @@ ul.dots img{
   /* jsでの操作対象 */
   opacity: 1;
   pointer-events: auto;
+  z-index: 3;
 }
 
 /* カルーセルslide */

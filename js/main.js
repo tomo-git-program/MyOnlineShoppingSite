@@ -142,11 +142,13 @@
       const motherUl = document.querySelector("div.arrow-pos-container").children[0];
       const arrival_li = document.createElement('li');
       //↑ul + 生成した(li)の連結ノード
+
       // 自動でcreateしたいエレメント
   
       const arrival_sold_out = document.createElement('div');
       const sold_out_text = document.createElement('p');
-      
+      const arrival_buy_cards = document.createElement('div');
+      const arrival_buy_cards_text = document.createElement('p');
       const arrival_a =  document.createElement('a');
       let arrival_img = document.createElement('img');
       //カードのイメージ画像も調整できるように
@@ -161,12 +163,18 @@
       //下準備系
       arrival_sold_out.classList.add("soldout");
       // div class="soldout"
+      arrival_buy_cards.classList.add("buy");
+      //div class="buy"
+      arrival_buy_cards_text.textContent = "詳細を見る"
+      arrival_buy_cards.appendChild(arrival_buy_cards_text);
+      //div (class="buy") > p(arrival_buy_cards_text)
       sold_out_text.textContent = "sold out"
       //pテキスト(sold out)
       arrival_sold_out.appendChild(sold_out_text);
       // div > p
       arrival_a.appendChild(arrival_img);
       //a > img
+      arrival_a.appendChild(arrival_buy_cards);
       cardName_p.classList.add("cardname");
       //p class="cardname"
       inventory_p.classList.add("inventory");
@@ -201,20 +209,30 @@
     if(inventory <= 0){
       const soldout = lists[number].querySelector('div.soldout');
       soldout.classList.add("appear");
+      const buy_cards = lists[number].querySelector('div.buy');
+      buy_cards.style.opacity = "0";
     }else{
       return
     }
+
+    // if(){
+    //   const buy_cards = lists[number].querySelector('div.buy');
+    //   buy_cards.classList.add(appear)
+    // }
   }
 
 
-  arrivalItemsGenerator(7);
-  arrivalItemsSetup(0, "#","imgs/arrival-cards.jpg","船砕きの怪物", 30, 1000);
+  arrivalItemsGenerator(8);
+  arrivalItemsSetup(0, "#","imgs/arrival-cards.jpg","船砕きの怪物", 0, 1000);
   arrivalItemsSetup(1, "#","imgs/arrival-cards.jpg","ドミナリアの英雄、テフェリー", 5, 1000);
-  arrivalItemsSetup(2, "#","imgs/arrival-cards.jpg","黙示録、シェオルドレッド", 25, 1000);
-  arrivalItemsSetup(3, "#","imgs/arrival-cards.jpg","時を解すもの、テフェリー", 0, 1000);
-  arrivalItemsSetup(4, "#","imgs/arrival-cards.jpg","船砕きの怪物", 5, 1000);
+  arrivalItemsSetup(2, "#","imgs/arrival-cards.jpg","黙示録、シェオルドレッド", 0, 1000);
+  arrivalItemsSetup(3, "#","imgs/arrival-cards.jpg","時を解すもの、テフェリー", 12, 1000);
+  arrivalItemsSetup(4, "#","imgs/arrival-cards.jpg","冥途明かりの行進", 8, 600);
+  arrivalItemsSetup(5, "#","imgs/arrival-cards.jpg","黙示録、シェオルドレッド", 0, 1000);
+  arrivalItemsSetup(6, "#","imgs/arrival-cards.jpg","時を解すもの、テフェリー", 12, 1000);
+  arrivalItemsSetup(7, "#","imgs/arrival-cards.jpg","冥途明かりの行進", 8, 600);
 
-  const lists = document.querySelector('ul.arrivalsLists').children;
+  //ここまでJSで最新入荷アイテムを表示させれ為のScript
 
   const arrivalLeftButton = document.querySelector("button.arrival-left-button");
   const arrivalRightButton = document.querySelector("button.arrival-right-button");
