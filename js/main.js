@@ -214,11 +214,6 @@
     }else{
       return
     }
-
-    // if(){
-    //   const buy_cards = lists[number].querySelector('div.buy');
-    //   buy_cards.classList.add(appear)
-    // }
   }
 
 
@@ -232,7 +227,7 @@
   arrivalItemsSetup(6, "#","imgs/arrival-cards.jpg","時を解すもの、テフェリー", 12, 1000);
   arrivalItemsSetup(7, "#","imgs/arrival-cards.jpg","冥途明かりの行進", 8, 600);
 
-  //ここまでJSで最新入荷アイテムを表示させれ為のScript
+  //ここまでJSで最新入荷アイテム表示用Script
 
   const arrivalLeftButton = document.querySelector("button.arrival-left-button");
   const arrivalRightButton = document.querySelector("button.arrival-right-button");
@@ -287,8 +282,7 @@
     arrivalslideMover();
   })
 
-
-  
+  //ここまで最新入荷アイテム手動クリックスライド用script
 
 
 

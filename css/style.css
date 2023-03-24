@@ -445,6 +445,7 @@ ul.dots img{
   background-color: rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s;
   color: white;
+  z-index: 4;
 }
 #arrival-items button:hover{
   background-color: rgba(0, 0, 0, 1);
